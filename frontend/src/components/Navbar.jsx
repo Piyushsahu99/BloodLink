@@ -20,6 +20,7 @@ const Navbar = () => {
     { path: "/dashboard", label: "Dashboard" },
     { path: "/campaigns", label: "Campaigns" },
     { path: "/leaderboard", label: "Leaderboard" },
+    { path: "/awareness", label: "Awareness" },
     { path: "/stem-cell-donation", label: "Stem Cell" },
   ];
 

@@ -17,6 +17,7 @@ import AdminPanel from "./pages/AdminPanel.jsx";
 import Profile from "./pages/Profile.jsx";
 import StemCellDonation from "./pages/StemCellDonation.jsx";
 import AdminLedger from "./pages/AdminLedger.jsx";
+import Awareness from "./pages/Awareness.jsx";
 import Chatbot from "./components/Chatbot.jsx";
 import { AuthProvider } from "./context/AuthContext.jsx";
 
@@ -56,6 +57,7 @@ const AnimatedRoutes = () => {
         <Route path="/campaigns" element={<PageTransition><Campaigns /></PageTransition>} />
         <Route path="/create-campaign" element={<PageTransition><CreateCampaign /></PageTransition>} />
         <Route path="/profile" element={<PageTransition><Profile /></PageTransition>} />
+    <Route path="/awareness" element={<PageTransition><Awareness /></PageTransition>} />
   <Route path="/stem-cell-donation" element={<PageTransition><StemCellDonation /></PageTransition>} />
         <Route
           path="*"

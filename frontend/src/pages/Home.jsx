@@ -12,6 +12,18 @@ import BlockchainHighlight from "../components/BlockchainHighlight";
 import donorsData from "../data/donors.json";
 
 const Home = () => {
+  const awarenessQuestions = [
+    "What is the minimum gap between donations?",
+    "Can I donate if I am on regular medication?",
+    "How does the AI assistant help first-time donors?"
+  ];
+
+  const openChat = (prompt) => {
+    if (typeof window !== "undefined") {
+      window.dispatchEvent(new CustomEvent("open-chatbot", { detail: { prompt } }));
+    }
+  };
+
   return (
     <div className="overflow-hidden relative">
       {/* Global Animated Background Particles Across Entire Page */}
@@ -92,6 +104,66 @@ const Home = () => {
 
       {/* Features Section */}
       <Features />
+
+      <motion.section
+        className="container mx-auto px-6 py-16"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+      >
+        <div className="relative overflow-hidden rounded-3xl border border-rose-100 bg-gradient-to-br from-white via-rose-50 to-red-50 shadow-2xl p-8">
+          <div className="absolute -top-24 -right-24 w-64 h-64 bg-gradient-to-br from-red-200 via-rose-200 to-pink-200 rounded-full blur-3xl opacity-50" />
+          <div className="relative grid lg:grid-cols-[1.4fr_1fr] gap-10 items-center">
+            <div className="space-y-5">
+              <span className="inline-flex items-center gap-2 bg-red-100 text-red-600 px-4 py-2 rounded-full font-semibold text-sm">
+                🌟 New in Raktchain
+              </span>
+              <h2 className="text-3xl md:text-4xl font-black text-gray-900 leading-tight">
+                Explore the Awareness Studio and chat live with our AI assistant
+              </h2>
+              <p className="text-gray-600 text-base leading-relaxed">
+                We bundled field-tested guides, myth busters, and an on-call assistant so donors never feel uncertain. Visit the awareness page or jump straight into a conversation below.
+              </p>
+              <div className="flex flex-wrap gap-3">
+                <Link
+                  to="/awareness"
+                  className="inline-flex items-center gap-2 bg-gradient-to-r from-red-600 to-rose-600 text-white px-6 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transition"
+                >
+                  Start learning
+                  <FaArrowRight />
+                </Link>
+                <button
+                  type="button"
+                  onClick={() => openChat("Hi! I want to learn about donating blood safely.")}
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold border border-red-200 text-red-600 hover:bg-red-50 transition"
+                >
+                  Ask the assistant
+                  🤖
+                </button>
+              </div>
+            </div>
+            <div className="bg-white/80 border border-rose-100 rounded-2xl p-6 shadow-xl space-y-3">
+              <p className="text-sm font-semibold text-rose-500 uppercase tracking-wide">Try these prompts</p>
+              <div className="grid gap-3">
+                {awarenessQuestions.map((question) => (
+                  <button
+                    key={question}
+                    type="button"
+                    onClick={() => openChat(question)}
+                    className="text-left bg-gradient-to-r from-white via-white to-rose-50 hover:from-rose-50 hover:to-white transition-colors rounded-xl px-4 py-3 text-sm font-semibold text-gray-700 border border-rose-100"
+                  >
+                    {question}
+                  </button>
+                ))}
+              </div>
+              <p className="text-xs text-gray-500">
+                Prompts load directly into the chat window. Review or tweak before you hit send.
+              </p>
+            </div>
+          </div>
+        </div>
+      </motion.section>
 
   <BlockchainHighlight />
 

@@ -19,6 +19,7 @@ const Chatbot = () => {
   const [inputValue, setInputValue] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef(null);
+  const inputRef = useRef(null);
   const { user } = useAuth();
   const welcomeTimeoutRef = useRef(null);
 
@@ -40,6 +41,29 @@ const Chatbot = () => {
       if (welcomeTimeoutRef.current) {
         clearTimeout(welcomeTimeoutRef.current);
       }
+    };
+  }, []);
+
+  useEffect(() => {
+    const handleOpenChatbot = (event) => {
+      const prompt = event?.detail?.prompt ?? "";
+      setIsOpen(true);
+      setIsMinimized(false);
+      setShowWelcome(false);
+      if (welcomeTimeoutRef.current) {
+        clearTimeout(welcomeTimeoutRef.current);
+      }
+      if (prompt) {
+        setInputValue(prompt);
+      }
+      requestAnimationFrame(() => {
+        inputRef.current?.focus();
+      });
+    };
+
+    window.addEventListener("open-chatbot", handleOpenChatbot);
+    return () => {
+      window.removeEventListener("open-chatbot", handleOpenChatbot);
     };
   }, []);
 
@@ -268,6 +292,7 @@ const Chatbot = () => {
             <div className="border-t border-gray-200 p-4 bg-white">
               <div className="flex gap-2">
                 <textarea
+                  ref={inputRef}
                   value={inputValue}
                   onChange={(e) => setInputValue(e.target.value)}
                   onKeyPress={handleKeyPress}

@@ -174,6 +174,7 @@ const Footer = () => {
                 { to: "/dashboard", label: "Dashboard" },
                 { to: "/campaigns", label: "Campaigns" },
                 { to: "/leaderboard", label: "Leaderboard" },
+                { to: "/awareness", label: "Awareness" },
                 { to: "/stem-cell-donation", label: "Stem Cell Donation" },
               ].map((link, index) => (
                 <motion.li
