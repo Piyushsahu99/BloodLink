@@ -2,7 +2,7 @@
 
 ## 📋 Complete Deployment Instructions
 
-This guide will help you deploy the BloodLink application with:
+This guide will help you deploy the Raktchain application with:
 - **Frontend** on **Vercel** 
 - **Backend** on **Render**
 
@@ -43,7 +43,7 @@ React/Vite          Express.js            Database
 1. Click **"Database Access"** (left sidebar)
 2. Click **"Add New Database User"**
 3. Choose **"Password"** authentication
-4. Username: `bloodlink_admin`
+4. Username: `raktchain_admin`
 5. **Password**: Generate a strong password (SAVE THIS!)
 6. Set privileges: **"Read and write to any database"**
 7. Click **"Add User"**
@@ -61,7 +61,7 @@ React/Vite          Express.js            Database
 2. Choose **"Connect your application"**
 3. Copy the connection string
 4. Replace `<password>` with your actual password
-5. Add database name: Replace `?retryWrites` with `/bloodlink?retryWrites`
+5. Add database name: Replace `?retryWrites` with `/raktchain?retryWrites`
 
 **⚠️ SAVE THIS CONNECTION STRING! You'll need it for Render.**
 
@@ -89,7 +89,7 @@ git push -u origin main
 4. Configure:
 
    **Basic Settings:**
-   - Name: `bloodlink-backend`
+   - Name: `raktchain-backend`
    - Region: `Singapore` (or closest)
    - Branch: `main`
    - Root Directory: `backend`
@@ -119,7 +119,7 @@ Click **"Add Environment Variable"** for each:
    https://your-app-name.onrender.com
    ```
 4. **Test it**: Visit `https://your-app-name.onrender.com/health`
-   - Should show: `{"status":"OK","message":"BloodLink Backend is running!"}`
+   - Should show: `{"status":"OK","message":"Raktchain Backend is running!"}`
 
 **⚠️ SAVE YOUR RENDER URL! You'll need it for Vercel.**
 
@@ -350,7 +350,7 @@ When ready for production:
 
 ## 🎉 Success!
 
-Your BloodLink app is now live! 🩸
+Your Raktchain app is now live! 🩸
 
 - **Frontend:** https://your-project-name.vercel.app
 - **Backend:** https://your-app-name.onrender.com

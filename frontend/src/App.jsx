@@ -15,6 +15,8 @@ import Signup from "./pages/Signup.jsx";
 import ForgotPassword from "./pages/ForgotPassword.jsx";
 import AdminPanel from "./pages/AdminPanel.jsx";
 import Profile from "./pages/Profile.jsx";
+import StemCellDonation from "./pages/StemCellDonation.jsx";
+import AdminLedger from "./pages/AdminLedger.jsx";
 import Chatbot from "./components/Chatbot.jsx";
 import { AuthProvider } from "./context/AuthContext.jsx";
 
@@ -46,13 +48,15 @@ const AnimatedRoutes = () => {
         <Route path="/login" element={<PageTransition><Login /></PageTransition>} />
         <Route path="/signup" element={<PageTransition><Signup /></PageTransition>} />
         <Route path="/forgot-password" element={<PageTransition><ForgotPassword /></PageTransition>} />
-        <Route path="/admin" element={<PageTransition><AdminPanel /></PageTransition>} />
+  <Route path="/admin" element={<PageTransition><AdminPanel /></PageTransition>} />
+  <Route path="/admin/ledger" element={<PageTransition><AdminLedger /></PageTransition>} />
         <Route path="/sos" element={<PageTransition><SOS /></PageTransition>} />
         <Route path="/dashboard" element={<PageTransition><Dashboard /></PageTransition>} />
         <Route path="/leaderboard" element={<PageTransition><LeaderboardPage /></PageTransition>} />
         <Route path="/campaigns" element={<PageTransition><Campaigns /></PageTransition>} />
         <Route path="/create-campaign" element={<PageTransition><CreateCampaign /></PageTransition>} />
         <Route path="/profile" element={<PageTransition><Profile /></PageTransition>} />
+  <Route path="/stem-cell-donation" element={<PageTransition><StemCellDonation /></PageTransition>} />
         <Route
           path="*"
           element={

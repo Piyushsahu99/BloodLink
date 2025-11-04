@@ -1,6 +1,6 @@
-# ✅ BloodLink Deployment Checklist
+# ✅ Raktchain Deployment Checklist
 
-Follow this checklist to deploy your BloodLink application to production with MongoDB Atlas.
+Follow this checklist to deploy your Raktchain application to production with MongoDB Atlas.
 
 ## 📋 Pre-Deployment Checklist
 
@@ -29,7 +29,7 @@ Follow this checklist to deploy your BloodLink application to production with Mo
 - [ ] Create new Web Service
 - [ ] Connect GitHub repository
 - [ ] Configure service:
-  - Name: `bloodlink-backend`
+  - Name: `raktchain-backend`
   - Region: Singapore
   - Root Directory: `backend`
   - Runtime: Node
@@ -42,7 +42,7 @@ Follow this checklist to deploy your BloodLink application to production with Mo
   - [ ] `PORT` = `5000`
 - [ ] Deploy service
 - [ ] Wait for successful deployment
-- [ ] Note the generated Render URL (e.g., `https://bloodlink-backend-xxxx.onrender.com`)
+- [ ] Note the generated Render URL (e.g., `https://raktchain-backend-xxxx.onrender.com`)
 
 ### 🎨 STEP 3: Frontend Deployment (Vercel)
 - [ ] Log in to [Vercel Dashboard](https://vercel.com/dashboard)
@@ -55,22 +55,22 @@ Follow this checklist to deploy your BloodLink application to production with Mo
   - Output Directory: `dist`
   - Install Command: `npm install`
 - [ ] Add Environment Variables:
-  - [ ] `VITE_API_URL` = Your Render backend URL + `/api` (e.g., `https://bloodlink-backend-xxxx.onrender.com/api`)
+  - [ ] `VITE_API_URL` = Your Render backend URL + `/api` (e.g., `https://raktchain-backend-xxxx.onrender.com/api`)
 - [ ] Deploy project
 - [ ] Wait for successful deployment
-- [ ] Note the generated Vercel URL (e.g., `https://bloodlink-xxxx.vercel.app`)
+- [ ] Note the generated Vercel URL (e.g., `https://raktchain-xxxx.vercel.app`)
 
 ### 🔗 STEP 4: Connect Frontend & Backend
 - [ ] Go back to Render backend service
 - [ ] Add Environment Variable:
-  - [ ] `FRONTEND_URL` = Your Vercel URL (e.g., `https://bloodlink-xxxx.vercel.app`)
+  - [ ] `FRONTEND_URL` = Your Vercel URL (e.g., `https://raktchain-xxxx.vercel.app`)
 - [ ] Redeploy backend service
 
 ## 🧪 Post-Deployment Testing
 
 ### Backend Verification
 - [ ] Visit health endpoint: `https://your-backend-url.onrender.com/health`
-- [ ] Should return: `{"status":"OK","message":"BloodLink Backend is running!"}`
+- [ ] Should return: `{"status":"OK","message":"Raktchain Backend is running!"}`
 
 ### Frontend Verification
 - [ ] Visit your application: `https://your-frontend-url.vercel.app`
@@ -114,7 +114,7 @@ If you encounter issues:
 
 ## 🎉 Success!
 
-When all checklist items are completed and verified, your BloodLink application will be successfully deployed and ready for users!
+When all checklist items are completed and verified, your Raktchain application will be successfully deployed and ready for users!
 
 ---
 
@@ -167,7 +167,7 @@ When all checklist items are completed and verified, your BloodLink application 
 
 1. **Backend Health Check**:
    - Visit your Render backend URL + /health (e.g., https://your-backend.onrender.com/health)
-   - Should return: {"status":"OK","message":"BloodLink Backend is running!"}
+   - Should return: {"status":"OK","message":"Raktchain Backend is running!"}
 
 2. **Frontend Testing**:
    - Visit your Vercel deployment URL

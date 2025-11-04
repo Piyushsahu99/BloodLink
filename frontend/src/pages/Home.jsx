@@ -8,6 +8,7 @@ import Testimonials from "../components/Testimonials";
 import DonorCard from "../components/DonorCard";
 import CampaignCard from "../components/CampaignCard";
 import AnimatedBloodDonation from "../components/AnimatedBloodDonation";
+import BlockchainHighlight from "../components/BlockchainHighlight";
 import donorsData from "../data/donors.json";
 
 const Home = () => {
@@ -91,6 +92,8 @@ const Home = () => {
 
       {/* Features Section */}
       <Features />
+
+  <BlockchainHighlight />
 
       {/* Recent Donors */}
       <section className="container mx-auto px-6 py-20 relative overflow-hidden">

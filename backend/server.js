@@ -55,6 +55,7 @@ const corsOptions = {
     
     // Check if origin is in allowed list
     const isAllowedOrigin = cleanAllowedOrigins.includes(origin);
+    const isLocalDevelopmentOrigin = /^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(origin ?? "");
     
     // Also allow if it's a subdomain of an allowed origin
     let isSubdomain = false;
@@ -71,8 +72,8 @@ const corsOptions = {
       }
     }
     
-    // Allow if origin is in allowed list or is a subdomain of an allowed origin
-    if (isAllowedOrigin || isSubdomain) {
+    // Allow if origin is in allowed list, local dev, or a subdomain of an allowed origin
+    if (isAllowedOrigin || isSubdomain || isLocalDevelopmentOrigin) {
       console.log('CORS Check - Origin ALLOWED');
       callback(null, true);
     } else {
@@ -129,7 +130,7 @@ app.get('/health', async (req, res) => {
   try {
     res.status(200).json({ 
       status: 'OK', 
-      message: 'BloodLink Backend is running!',
+      message: 'Raktchain Backend is running!',
       timestamp: new Date().toISOString(),
       environment: {
         NODE_ENV: process.env.NODE_ENV || 'development',
@@ -141,7 +142,7 @@ app.get('/health', async (req, res) => {
   } catch (error) {
     res.status(200).json({ 
       status: 'OK', 
-      message: 'BloodLink Backend is running!',
+      message: 'Raktchain Backend is running!',
       timestamp: new Date().toISOString(),
       environment: {
         NODE_ENV: process.env.NODE_ENV || 'development',
@@ -156,7 +157,7 @@ app.get('/health', async (req, res) => {
 // Root Route
 app.get('/', (req, res) => {
   res.status(200).json({ 
-    message: 'BloodLink API Server',
+    message: 'Raktchain API Server',
     version: '1.0.0',
     endpoints: {
       auth: '/api/auth',
@@ -165,6 +166,8 @@ app.get('/', (req, res) => {
       banks: '/api/banks',
       leaderboard: '/api/leaderboard',
       campaigns: '/api/campaigns',
+      stemCell: '/api/stemcell',
+      blockchain: '/api/blockchain'
     }
   });
 });
@@ -178,6 +181,8 @@ import leaderboardRoutes from "./routes/leaderboardRoutes.js";
 import campaignRoutes from "./routes/campaignRoutes.js";
 import authRoutes, { authenticateToken } from "./routes/authRoutes.js";
 import chatbotRoutes from "./routes/chatbotRoutes.js";
+import stemCellRoutes from "./routes/stemCellRoutes.js";
+import blockchainRoutes from "./routes/blockchainRoutes.js";
 
 // API Routes - MOVE THESE BEFORE THE FALLBACK ROUTE
 app.use("/api/auth", authRoutes);
@@ -187,6 +192,8 @@ app.use("/api/banks", bankRoutes);
 app.use("/api/leaderboard", leaderboardRoutes);
 app.use("/api/campaigns", campaignRoutes);
 app.use("/api/chatbot", chatbotRoutes);
+app.use("/api/stemcell", stemCellRoutes);
+app.use("/api/blockchain", blockchainRoutes);
 
 // 404 Handler - This should be the last route
 app.use((req, res) => {

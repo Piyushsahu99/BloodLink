@@ -1,6 +1,6 @@
-# BloodLink Backend API
+# Raktchain Backend API
 
-This is the backend API for the BloodLink blood donation platform, built with Node.js, Express, and MongoDB.
+This is the backend API for the Raktchain blood donation platform, built with Node.js, Express, and MongoDB.
 
 ## API Endpoints
 
@@ -41,6 +41,10 @@ This is the backend API for the BloodLink blood donation platform, built with No
 
 ### Leaderboard
 - `GET /api/leaderboard` - Get donor leaderboard
+
+### Stem Cell Registry
+- `POST /api/stemcell/register` - Register or update a stem cell donor profile
+- `GET /api/stemcell/stats` - Retrieve aggregate registration statistics
 
 ## Environment Variables
 

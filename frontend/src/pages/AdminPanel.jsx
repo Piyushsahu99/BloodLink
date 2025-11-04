@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import axios from "../api/axiosConfig";
-import { FaUsers, FaTint, FaBullhorn, FaHeartbeat, FaPlus, FaSearch, FaEdit, FaTrash, FaEye, FaKey } from "react-icons/fa";
+import { FaUsers, FaTint, FaBullhorn, FaHeartbeat, FaPlus, FaSearch, FaEdit, FaTrash, FaEye, FaKey, FaCubes } from "react-icons/fa";
 
 const AdminPanel = () => {
   const navigate = useNavigate();
@@ -250,6 +250,15 @@ const AdminPanel = () => {
             </span>
           </h1>
           <p className="text-gray-600">Manage donors, users, and medical records</p>
+          <div className="mt-4 flex flex-wrap gap-3">
+            <button
+              type="button"
+              onClick={() => navigate("/admin/ledger")}
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-rose-600 to-pink-500 text-white px-5 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transition"
+            >
+              <FaCubes /> Open Ledger Console
+            </button>
+          </div>
         </motion.div>
 
         {/* Password Change Modal */}

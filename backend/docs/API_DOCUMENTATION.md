@@ -1,6 +1,6 @@
-# BloodLink API Documentation
+# Raktchain API Documentation
 
-This document provides detailed information about the BloodLink API endpoints, request/response formats, and authentication requirements.
+This document provides detailed information about the Raktchain API endpoints, request/response formats, and authentication requirements.
 
 ## 🔐 Authentication
 
@@ -26,6 +26,7 @@ http://localhost:5000/api
 
 In production, this will be:
 ```
+> **Privacy:** Phone numbers are masked in responses to protect donor contact details.
 https://your-deployment-url/api
 ```
 
@@ -74,6 +75,202 @@ POST /auth/login
 
 **Request Body:**
 ```json
+### Stem Cell Registry Routes
+
+#### Register or Update a Stem Cell Donor
+```
+POST /stemcell/register
+```
+
+**Request Body:**
+```json
+{
+  "fullName": "string",
+  "email": "string",
+  "phone": "string",
+  "city": "string",
+  "age": 28,
+  "bloodGroup": "string",
+  "availability": "string",
+  "experience": "string",
+  "medicalHistory": "string",
+  "consent": true,
+  "preferredContactTime": "string"
+}
+```
+
+**Response:**
+```json
+{
+  "message": "Thank you for registering as a stem cell donor.",
+  "data": {
+    "_id": "string",
+    "fullName": "string",
+    "email": "string",
+    "city": "string",
+    "bloodGroup": "string",
+    "createdAt": "date",
+    "updatedAt": "date"
+  }
+}
+```
+
+#### Retrieve Stem Cell Registration Stats
+```
+GET /stemcell/stats
+```
+
+**Response:**
+```json
+{
+  "totalRegistered": 128,
+  "activeCities": 17
+}
+```
+
+### Blockchain Ledger Routes
+
+> Ensures donation trails remain immutable and auditable. All endpoints are read-only except `/record`, which hashes a new donation record into the ledger.
+
+#### Ledger Summary
+```
+GET /blockchain/summary
+```
+
+**Response:**
+```json
+{
+  "totalTransactions": 24,
+  "difficulty": 3,
+  "lastTransaction": {
+    "index": 24,
+    "timestamp": "2025-11-01T10:02:23.418Z",
+    "data": {
+      "donor": "Jane D.",
+      "recipient": "Central City Hospital",
+      "units": 2,
+      "bloodGroup": "O+",
+      "campaignId": "CAMP-1001",
+      "location": "Central City",
+      "notes": "Emergency transplant",
+      "recordedAt": "2025-11-01T10:02:23.418Z",
+      "verifiedBy": "Admin Team"
+    },
+    "previousHash": "000f8...",
+    "hash": "0005a...",
+    "nonce": 12243
+  }
+}
+```
+
+#### List Ledger Entries
+```
+GET /blockchain/entries
+```
+
+**Query Parameters (all optional):**
+
+| Name | Description |
+| --- | --- |
+| `limit` | Maximum number of blocks to return (capped at 250). |
+| `offset` | Skip the first `offset` matching blocks. |
+| `sort` | `asc` or `desc` (default). Orders blocks by timestamp. |
+| `search` | Free-text search across donor, recipient, notes, and campaign id. |
+| `donor` | Filter by donor name. |
+| `recipient` | Filter by recipient name. |
+| `bloodGroup` | Filter by blood group (exact match). |
+| `verifier` | Filter by verifier name. |
+| `campaignId` | Filter by campaign id. |
+| `location` | Filter by location. |
+| `format=download` | Stream the response with `Content-Disposition: attachment` for exports. |
+
+**Response:**
+```json
+{
+  "total": 42,
+  "limit": 25,
+  "offset": 0,
+  "count": 25,
+  "entries": [
+    {
+      "index": 42,
+      "timestamp": "2025-11-01T10:02:23.418Z",
+      "data": {
+        "donor": "Jane D.",
+        "recipient": "Central City Hospital",
+        "units": 2,
+        "bloodGroup": "O+",
+        "campaignId": "CAMP-1001",
+        "location": "Central City",
+        "notes": "Emergency transplant",
+        "recordedAt": "2025-11-01T10:02:23.418Z",
+        "verifiedBy": "Admin Team"
+      },
+      "previousHash": "000f8...",
+      "hash": "0005a...",
+      "nonce": 12243
+    }
+  ]
+}
+```
+
+#### Verify Ledger Integrity
+```
+GET /blockchain/verify
+```
+
+**Response:**
+```json
+{
+  "isValid": true,
+  "invalidIndex": null,
+  "reason": null
+}
+```
+
+#### Record a Verified Donation
+```
+POST /blockchain/record
+```
+
+**Request Body:**
+```json
+{
+  "donor": "Jane D.",
+  "recipient": "Central City Hospital",
+  "units": 2,
+  "bloodGroup": "O+",
+  "verifiedBy": "Admin Team",
+  "campaignId": "CAMP-1001",
+  "location": "Central City",
+  "notes": "Emergency transplant"
+}
+```
+
+**Response:**
+```json
+{
+  "message": "Donation record anchored to blockchain",
+  "data": {
+    "index": 24,
+    "timestamp": "2025-11-01T10:02:23.418Z",
+    "data": {
+      "donor": "Jane D.",
+      "recipient": "Central City Hospital",
+      "units": 2,
+      "bloodGroup": "O+",
+      "campaignId": "CAMP-1001",
+      "location": "Central City",
+      "notes": "Emergency transplant",
+      "recordedAt": "2025-11-01T10:02:23.418Z",
+      "verifiedBy": "Admin Team"
+    },
+    "previousHash": "000f8...",
+    "hash": "0005a...",
+    "nonce": 12243
+  }
+}
+```
 {
   "email": "string",
   "password": "string"

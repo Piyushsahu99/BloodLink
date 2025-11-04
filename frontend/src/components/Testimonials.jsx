@@ -8,7 +8,7 @@ const Testimonials = () => {
       name: "Sarah Johnson",
       role: "Regular Donor",
       image: "https://i.pravatar.cc/150?img=5",
-      text: "BloodLink made donating blood so easy! I've saved 3 lives so far and the platform keeps me updated on my impact. Truly amazing!",
+      text: "Raktchain made donating blood so easy! I've saved 3 lives so far and the platform keeps me updated on my impact. Truly amazing!",
       rating: 5,
       bloodType: "O+",
     },
@@ -16,7 +16,7 @@ const Testimonials = () => {
       name: "Michael Brown",
       role: "Recipient's Family",
       image: "https://i.pravatar.cc/150?img=13",
-      text: "When my father needed urgent blood in New York, BloodLink connected us with donors in under 10 minutes. They literally saved his life!",
+      text: "When my father needed urgent blood in New York, Raktchain connected us with donors in under 10 minutes. They literally saved his life!",
       rating: 5,
       bloodType: "AB-",
     },
@@ -32,7 +32,7 @@ const Testimonials = () => {
       name: "John Smith",
       role: "Campaign Organizer",
       image: "https://i.pravatar.cc/150?img=12",
-      text: "Organizing blood donation camps in Chicago has never been easier. BloodLink's platform is intuitive and reaches thousands of potential donors.",
+      text: "Organizing blood donation camps in Chicago has never been easier. Raktchain's platform is intuitive and reaches thousands of potential donors.",
       rating: 5,
       bloodType: "A+",
     },
@@ -40,7 +40,7 @@ const Testimonials = () => {
       name: "Dr. Lisa Anderson",
       role: "Medical Professional",
       image: "https://i.pravatar.cc/150?img=1",
-      text: "As a doctor at City Hospital, I've seen how BloodLink bridges the gap between blood banks and patients. The verification system is top-notch!",
+      text: "As a doctor at City Hospital, I've seen how Raktchain bridges the gap between blood banks and patients. The verification system is top-notch!",
       rating: 5,
       bloodType: "O-",
     },
@@ -48,7 +48,7 @@ const Testimonials = () => {
       name: "David Wilson",
       role: "First-time Donor",
       image: "https://i.pravatar.cc/150?img=15",
-      text: "I was nervous about donating for the first time in Los Angeles, but BloodLink's guides and supportive community made the experience wonderful!",
+      text: "I was nervous about donating for the first time in Los Angeles, but Raktchain's guides and supportive community made the experience wonderful!",
       rating: 5,
       bloodType: "A-",
     },
@@ -112,7 +112,7 @@ const Testimonials = () => {
           </h2>
 
           <p className="text-gray-600 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
-            Real experiences from donors and recipients who trust BloodLink
+            Real experiences from donors and recipients who trust Raktchain
           </p>
         </motion.div>
 

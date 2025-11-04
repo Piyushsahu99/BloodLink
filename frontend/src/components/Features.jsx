@@ -35,7 +35,7 @@ const Features = () => {
     {
       icon: FaMobileAlt,
       title: "Mobile Ready",
-      description: "Access BloodLink anywhere, anytime from any device with responsive design.",
+      description: "Access Raktchain anywhere, anytime from any device with responsive design.",
       gradient: "from-red-400 to-rose-500",
       bgGlow: "group-hover:shadow-red-500/50",
     },

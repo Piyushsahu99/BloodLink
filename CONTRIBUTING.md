@@ -1,6 +1,6 @@
-# Contributing to BloodLink
+# Contributing to Raktchain
 
-Thank you for your interest in contributing to BloodLink! We welcome contributions from the community to help improve our blood donation platform.
+Thank you for your interest in contributing to Raktchain! We welcome contributions from the community to help improve our blood donation platform.
 
 ## Table of Contents
 
@@ -19,7 +19,7 @@ This project adheres to the [Code of Conduct](CODE_OF_CONDUCT.md). By participat
 ## Getting Started
 
 1. Fork the repository
-2. Clone your fork: `git clone https://github.com/your-username/bloodlink.git`
+2. Clone your fork: `git clone https://github.com/your-username/raktchain.git`
 3. Create a new branch for your feature or bug fix: `git checkout -b feature/your-feature-name`
 4. Make your changes
 5. Commit your changes following our [commit message conventions](#git-commit-messages)
@@ -36,8 +36,8 @@ This project adheres to the [Code of Conduct](CODE_OF_CONDUCT.md). By participat
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/bloodlink.git
-cd bloodlink
+git clone https://github.com/your-username/raktchain.git
+cd raktchain
 
 # Install backend dependencies
 cd backend
@@ -153,4 +153,4 @@ When reporting a bug, please include:
 - Write secure code following OWASP guidelines
 - Document APIs appropriately
 
-Thank you for contributing to BloodLink!
+Thank you for contributing to Raktchain!

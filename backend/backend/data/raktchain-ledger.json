@@ -1,0 +1,48 @@
+[
+  {
+    "index": 0,
+    "timestamp": "2025-01-01T00:00:00.000Z",
+    "data": {
+      "message": "Raktchain genesis block"
+    },
+    "previousHash": "0000000000000000000000000000000000000000000000000000000000000000",
+    "nonce": 7837,
+    "hash": "00053d70a991aa6deeae496de0a536d5016e4e6d338cc5a10595faa34a4ffd4b"
+  },
+  {
+    "index": 1,
+    "timestamp": "2025-11-01T21:35:12.051Z",
+    "data": {
+      "donor": "Demo Donor",
+      "recipient": "City Hospital",
+      "units": 2,
+      "bloodGroup": "O+",
+      "campaignId": "DEMO-001",
+      "location": "Downtown",
+      "notes": "Automated ledger seed",
+      "recordedAt": "2025-11-01T21:35:12.050Z",
+      "verifiedBy": "QA Bot"
+    },
+    "previousHash": "00053d70a991aa6deeae496de0a536d5016e4e6d338cc5a10595faa34a4ffd4b",
+    "nonce": 15590,
+    "hash": "0004f9a2f5bae362b9488613eb0066a4d402424325e06dcd92386556af24a64c"
+  },
+  {
+    "index": 2,
+    "timestamp": "2025-11-01T21:35:33.981Z",
+    "data": {
+      "donor": "Demo Donor",
+      "recipient": "City Hospital",
+      "units": 1,
+      "bloodGroup": "A+",
+      "campaignId": "DEMO-002",
+      "location": "Central",
+      "notes": "Ledger double seed",
+      "recordedAt": "2025-11-01T21:35:33.981Z",
+      "verifiedBy": "QA Bot"
+    },
+    "previousHash": "0004f9a2f5bae362b9488613eb0066a4d402424325e06dcd92386556af24a64c",
+    "nonce": 1499,
+    "hash": "0008673c16dfa39262c4e9dec5d2eac99f22fb2911ebefd946feb40bb43c9730"
+  }
+]

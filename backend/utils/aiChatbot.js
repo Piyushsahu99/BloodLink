@@ -6,7 +6,7 @@ const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
 // System prompt for the AI assistant
 const systemPrompt = `
-You are an intelligent blood donation assistant for BloodLink, a platform that connects blood donors with recipients in India. Your role is to:
+You are an intelligent blood donation assistant for Raktchain, a platform that connects blood donors with recipients in India. Your role is to:
 
 1. Provide accurate information about blood donation, blood groups, and the donation process
 2. Help users find donors by explaining how to use the platform's search features
@@ -76,7 +76,7 @@ const getFallbackResponse = (message) => {
   
   // Greetings
   if (lowerMessage.includes("hello") || lowerMessage.includes("hi") || lowerMessage.includes("hey")) {
-    return "Hello! 👋 I'm your BloodLink assistant. How can I help you with blood donation today?";
+    return "Hello! 👋 I'm your Raktchain assistant. How can I help you with blood donation today?";
   }
   
   // Help requests

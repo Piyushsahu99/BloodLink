@@ -1,6 +1,6 @@
 # Development Guide
 
-This guide will help you set up and contribute to the BloodLink project.
+This guide will help you set up and contribute to the Raktchain project.
 
 ## 🛠️ Prerequisites
 
@@ -15,13 +15,13 @@ Before you begin, ensure you have the following installed:
 1. Fork the repository on GitHub
 2. Clone your fork:
    ```bash
-   git clone https://github.com/YOUR_USERNAME/bloodlink.git
-   cd bloodlink
+   git clone https://github.com/YOUR_USERNAME/raktchain.git
+   cd raktchain
    ```
 
 3. Add the upstream remote:
    ```bash
-   git remote add upstream https://github.com/ORIGINAL_OWNER/bloodlink.git
+   git remote add upstream https://github.com/ORIGINAL_OWNER/raktchain.git
    ```
 
 4. Install dependencies for both frontend and backend:

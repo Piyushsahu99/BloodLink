@@ -5,46 +5,108 @@ import axios from "../api/axiosConfig";
 import CampaignCard from "../components/CampaignCard";
 import { FaCalendarAlt, FaPlus, FaRedo } from "react-icons/fa";
 
+const FALLBACK_CAMPAIGNS = [
+  {
+    _id: "fallback-1",
+    title: "Citywide Lifeline Drive",
+    description: "Partner hospitals need universal donors this weekend. Drop in, donate, and collect wellness goodies!",
+    date: new Date().toISOString(),
+    location: "Central Community Center",
+    organizer: "Raktchain Volunteers",
+    city: "Central City",
+    targetDonors: 120,
+    registeredDonors: 64,
+    status: "upcoming",
+  },
+  {
+    _id: "fallback-2",
+    title: "Corporate Heroes Marathon",
+    description: "Local tech companies are teaming up to restock rare blood groups. Shuttle service available.",
+    date: new Date(Date.now() + 1000 * 60 * 60 * 24 * 5).toISOString(),
+    location: "Tech Park Atrium",
+    organizer: "Raktchain Corporate Alliance",
+    city: "Innovation Bay",
+    targetDonors: 80,
+    registeredDonors: 52,
+    status: "upcoming",
+  },
+  {
+    _id: "fallback-3",
+    title: "Night Owl Donation Camp",
+    description: "Special late-night drive for shift workers with on-site health screenings and refreshments.",
+    date: new Date(Date.now() + 1000 * 60 * 60 * 24 * 10).toISOString(),
+    location: "Metro Plaza",
+    organizer: "City Red Cross",
+    city: "Metroville",
+    targetDonors: 150,
+    registeredDonors: 97,
+    status: "upcoming",
+  },
+];
+
 const Campaigns = () => {
   const [campaigns, setCampaigns] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [retryCount, setRetryCount] = useState(0);
+  const [infoMessage, setInfoMessage] = useState("");
 
   useEffect(() => {
+    let isMounted = true;
+    let retryTimer;
+
     const fetchCampaigns = async () => {
       try {
         setLoading(true);
         const res = await axios.get("/campaigns");
+        if (!isMounted) {
+          return;
+        }
         setCampaigns(Array.isArray(res.data) ? res.data : []);
         setError(null);
+        setInfoMessage("");
       } catch (err) {
         console.error("Error loading campaigns:", err);
-        setError("Failed to load campaigns. Please try again later.");
-        setCampaigns([]);
+        if (!isMounted) {
+          return;
+        }
+        if (FALLBACK_CAMPAIGNS.length > 0) {
+          setCampaigns(FALLBACK_CAMPAIGNS);
+          setError(null);
+          setInfoMessage("Live campaign updates are temporarily unavailable. Displaying recent highlights instead.");
+        } else {
+          setError("Failed to load campaigns. Please try again later.");
+          setCampaigns([]);
+        }
+
+        if (retryCount < 3) {
+          retryTimer = setTimeout(() => {
+            if (isMounted) {
+              setRetryCount((prev) => prev + 1);
+            }
+          }, 5000);
+        }
       } finally {
-        setLoading(false);
+        if (isMounted) {
+          setLoading(false);
+        }
       }
     };
-    
+
     fetchCampaigns();
-    
-    // Retry logic - if there's an error, retry after 5 seconds
-    let retryTimer;
-    if (error && retryCount < 3) {
-      retryTimer = setTimeout(() => {
-        setRetryCount(prev => prev + 1);
-      }, 5000);
-    }
-    
+
     return () => {
-      if (retryTimer) clearTimeout(retryTimer);
+      isMounted = false;
+      if (retryTimer) {
+        clearTimeout(retryTimer);
+      }
     };
-  }, [error, retryCount]);
+  }, [retryCount]);
 
   const handleRetry = () => {
-    setRetryCount(0);
+    setRetryCount((prev) => prev + 1);
     setError(null);
+    setInfoMessage("");
     setLoading(true);
   };
 
@@ -200,6 +262,22 @@ const Campaigns = () => {
             Create New Campaign
           </Link>
         </motion.div>
+
+        {infoMessage && (
+          <motion.div
+            className="mb-10 border border-amber-200 bg-amber-50 text-amber-800 rounded-2xl p-4 text-sm font-semibold"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+          >
+            {infoMessage}
+            <button
+              onClick={handleRetry}
+              className="ml-3 inline-flex items-center gap-2 rounded-full bg-white px-4 py-1 text-xs text-amber-700 shadow"
+            >
+              <FaRedo className="text-xs" /> Retry now
+            </button>
+          </motion.div>
+        )}
 
         {/* Campaigns Grid */}
         {campaigns.length === 0 ? (

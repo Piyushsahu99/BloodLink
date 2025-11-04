@@ -1,6 +1,6 @@
 # Frontend Testing
 
-This directory contains tests for the BloodLink frontend.
+This directory contains tests for the Raktchain frontend.
 
 ## Test Structure
 
