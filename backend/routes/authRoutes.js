@@ -286,7 +286,7 @@ router.get("/donors", authenticateToken, isAdmin, async (req, res) => {
 // Get all donors - public endpoint for regular users and donors
 router.get("/donors-public", async (req, res) => {
   try {
-    const donors = await User.find({ isDonor: true }).select('-password');
+    const donors = await User.find({ isDonor: true }).select('name bloodGroup city');
     res.json(donors);
   } catch (error) {
     res.status(500).json({ message: "Error fetching donors", error: error.message });
